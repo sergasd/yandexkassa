@@ -1,0 +1,28 @@
+{
+    "name": "sergasd/yandexkassa",
+    "authors": [
+        {
+            "name": "sergasd",
+            "email": "sergasd@gmail.com"
+        }
+    ],
+    "require": {
+
+    },
+    "require-dev": {
+        "phpunit/phpunit-selenium": "*",
+        "phpunit/php-invoker": "dev-master",
+        "phpunit/phpunit-story": "*",
+        "phpunit/dbunit": "*",
+        "mockery/mockery": "dev-master",
+        "symfony/var-dumper": "*",
+        "codeception/specify": "*",
+        "codeception/verify": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "sergasd\\yandexkassa\\": "src/"
+        }
+    }
+
+}
