@@ -1,6 +1,6 @@
 <?php
 
-namespace sergasd\yandexkassa\bridge;
+namespace sergasd\yandexkassa;
 
 class PaymentType
 {
@@ -38,5 +38,10 @@ class PaymentType
             self::TYPE_МА => 'Оплата через MasterPass',
             self::TYPE_PB => 'Оплата через Промсвязьбанк',
         ];
+    }
+
+    public static function getAllowedPayMethodsList($allowedPayMethods = [])
+    {
+        return array_intersect_key(static::getTypeLabels(), array_flip($allowedPayMethods));
     }
 }
