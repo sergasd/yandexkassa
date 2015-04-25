@@ -1,10 +1,11 @@
 <?php
 
-namespace sergasd\yandexkassa\bridge;
+namespace sergasd\yandexkassa\bridge\yii1;
 
 use CApplicationComponent;
 use CException;
 use sergasd\yandexkassa\IRequestHandler;
+use sergasd\yandexkassa\PaymentType;
 use sergasd\yandexkassa\YandexKassa;
 use Yii;
 
@@ -21,6 +22,19 @@ class Yii1YandexKassa extends CApplicationComponent
 
     /** @var IRequestHandler */
     public $requestHandler;
+
+    /**
+     * @var string урл для отправки формы
+     * Тестовый режим: https://demomoney.yandex.ru/eshop.xml
+     * Продакшн режим: https://money.yandex.ru/eshop.xml
+     */
+    public $formUrl = 'https://money.yandex.ru/eshop.xml';
+
+    /**
+     * @var array Доступные методы оплаты
+     * @see https://money.yandex.ru/doc.xml?id=526537
+     */
+    public $allowedPayMethods = ['PC', 'AC', 'MC', 'GP', 'WM', 'SB', 'MP', 'AB', 'МА', 'PB'];
 
     /** @var YandexKassa */
     private $kassa;
@@ -48,5 +62,10 @@ class Yii1YandexKassa extends CApplicationComponent
     public function createPaymentAvisoResponse(array $requestData)
     {
         return $this->kassa->createPaymentAvisoResponse($requestData);
+    }
+
+    public function getAllowedPayMethodsList()
+    {
+        return PaymentType::getAllowedPayMethodsList($this->allowedPayMethods);
     }
 }
