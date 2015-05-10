@@ -6,6 +6,7 @@
             "email": "sergasd@gmail.com"
         }
     ],
+    "license": "MIT",
     "require": {
 
     },
